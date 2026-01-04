@@ -1,64 +1,45 @@
-import { styled } from "@mui/material/styles";
+import { CSSObject, styled } from "@mui/material/styles";
+import { PipelineSolucoesTypographyTokens } from "@pipelinesolucoes/theme";
 
 interface TitleFooterStyleProps {
   textColor: string;
+  typo?: CSSObject | PipelineSolucoesTypographyTokens;
 }
 
 export const TextoFooterStyle = styled('div', {
   shouldForwardProp: (prop) =>
-    !['textColor'].includes(prop as string),
-})<TitleFooterStyleProps>(({ theme, textColor }) => ({
+    !['textColor', 'typo'].includes(prop as string),
+})<TitleFooterStyleProps>(({ theme, textColor, typo}) => ({
 
     width: '100%',
     textAlign: 'left',
     color: textColor,
 
-    // Tipografia
-    fontFamily: theme.typography.fontFamily,
-    fontWeight: theme.typography.body1?.fontWeight,
-    fontStyle: theme.typography.body1?.fontStyle,
-    lineHeight: theme.typography.body1?.lineHeight,
-    letterSpacing: theme.typography.body1?.letterSpacing,
-    fontSize: theme.typography.body1?.fontSize,
-    margin: theme.typography.body1?.margin,
+    ...(typo ?? theme.typography['body1']),
 }));
 
 export const TitleFooterStyle = styled('div', {
   shouldForwardProp: (prop) =>
-    !['textColor'].includes(prop as string),
-})<TitleFooterStyleProps>(({ theme, textColor }) => ({
+    !['textColor', 'typo'].includes(prop as string),
+})<TitleFooterStyleProps>(({ theme, textColor, typo }) => ({
 
     width: '100%',
     textAlign: 'left',
     color: textColor,
 
-    // Tipografia
-    fontFamily: theme.typography.fontFamily,
-    fontWeight: theme.typography.body2?.fontWeight,
-    fontStyle: theme.typography.body2?.fontStyle,
-    lineHeight: theme.typography.body2?.lineHeight,
-    letterSpacing: theme.typography.body2?.letterSpacing,
-    fontSize: theme.typography.body2?.fontSize,
-    margin: theme.typography.body2?.margin,
+    ...(typo ?? theme.typography['body1']),
 }));
 
 export const TitleFooterCenterToMobileStyle = styled('div', {
   shouldForwardProp: (prop) =>
-    !['textColor'].includes(prop as string),
-})<TitleFooterStyleProps>(({ theme, textColor }) => ({
+    !['textColor', 'typo'].includes(prop as string),
+})<TitleFooterStyleProps>(({ theme, textColor, typo }) => ({
     
   width: '100%',
   textAlign: 'center',
   color: textColor,
 
-  // Tipografia
-  fontFamily: theme.typography.fontFamily,
-  fontWeight: theme.typography.body2?.fontWeight,
-  fontStyle: theme.typography.body2?.fontStyle,
-  lineHeight: theme.typography.body2?.lineHeight,
-  letterSpacing: theme.typography.body2?.letterSpacing,
-  fontSize: theme.typography.body2?.fontSize,
-  margin: theme.typography.body2?.margin,
+  ...(typo ?? theme.typography['body1']),
 
   [theme.breakpoints.up('md')]: {
     textAlign: 'left',
